@@ -1,0 +1,367 @@
+package Chapter3Exercise;
+
+import java.util.Scanner;
+
+public class Cha3Ex3_1 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+   
+        System.out.print("Enter a, b, c: ");
+        double a = input.nextDouble();
+        double b = input.nextDouble();
+        double c = input.nextDouble();
+
+      
+        double discriminant = b * b - 4 * a * c;
+
+   
+        if (discriminant > 0) {
+            double r1 = (-b + Math.pow(discriminant, 0.5)) / (2 * a);
+            double r2 = (-b - Math.pow(discriminant, 0.5)) / (2 * a);
+            System.out.println("The equation has two roots " + r1 + " and " + r2);
+        } else if (discriminant == 0) {
+            double r = -b / (2 * a);
+            System.out.println("The equation has one root " + r);
+        } else {
+            System.out.println("The equation has no real roots.");
+        }
+
+        input.close();
+    }
+}
+
+package Chapter3Exercise;
+
+import java.util.Scanner;
+
+public class Cha3Ex3_2 {
+    public static void main(String[] args) {
+       
+        int number1 = (int)(Math.random() * 10);
+        int number2 = (int)(Math.random() * 10);
+        int number3 = (int)(Math.random() * 10);
+
+       
+        Scanner input = new Scanner(System.in);
+        System.out.print("What is " + number1 + " + " + number2 + " + " + number3 + "? ");
+
+        int answer = input.nextInt();
+
+
+        if (answer == number1 + number2 + number3) {
+            System.out.println("Correct!");
+        } else {
+            System.out.println("Incorrect. The correct answer is " + (number1 + number2 + number3));
+        }
+
+        input.close();
+    }
+}
+
+package Chapter3Exercise;
+
+import java.util.Scanner;
+
+public class Cha3Ex3_3 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        
+        System.out.print("Enter a, b, c, d, e, f: ");
+        double a = input.nextDouble();
+        double b = input.nextDouble();
+        double c = input.nextDouble();
+        double d = input.nextDouble();
+        double e = input.nextDouble();
+        double f = input.nextDouble();
+
+      
+        double determinant = a * d - b * c;
+
+      
+        if (determinant != 0) {
+            double x = (e * d - b * f) / determinant;
+            double y = (a * f - e * c) / determinant;
+            System.out.println("x is " + x + " and y is " + y);
+        } else {
+            System.out.println("The equation has no solution.");
+        }
+
+        input.close();
+    }
+}
+
+package Chapter3Exercise;
+
+public class Cha3Ex3_4 {
+    public static void main(String[] args) {
+        
+        int monthNumber = (int)(Math.random() * 12) + 1;
+
+        String monthName;
+
+        
+        switch (monthNumber) {
+            case 1:  monthName = "January"; break;
+            case 2:  monthName = "February"; break;
+            case 3:  monthName = "March"; break;
+            case 4:  monthName = "April"; break;
+            case 5:  monthName = "May"; break;
+            case 6:  monthName = "June"; break;
+            case 7:  monthName = "July"; break;
+            case 8:  monthName = "August"; break;
+            case 9:  monthName = "September"; break;
+            case 10: monthName = "October"; break;
+            case 11: monthName = "November"; break;
+            case 12: monthName = "December"; break;
+            default: monthName = "Invalid"; // Should never happen
+        }
+
+        // Display result
+        System.out.println("The month is " + monthName);
+    }
+}
+
+package Chapter3Exercise;
+
+import java.util.Scanner;
+
+public class Cha3Ex3_5 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Input: today's day and elapsed days
+        System.out.print("Enter today's day (0 for Sunday, 1 for Monday, ..., 6 for Saturday): ");
+        int today = input.nextInt();
+
+        System.out.print("Enter the number of days elapsed since today: ");
+        int elapsed = input.nextInt();
+
+        // Calculate future day
+        int futureDay = (today + elapsed) % 7;
+
+        // Day names
+        String[] dayNames = {
+            "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+        };
+
+        // Display result
+        System.out.println("Today is " + dayNames[today] + " and the future day is " + dayNames[futureDay]);
+
+        input.close();
+    }
+}
+
+package Chapter3Exercise;
+
+
+import java.util.Scanner;
+
+public class Cha3Ex3_6 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+       
+        System.out.print("Enter weight in pounds: ");
+        double weight = input.nextDouble();
+
+        System.out.print("Enter feet: ");
+        int feet = input.nextInt();
+
+        System.out.print("Enter inches: ");
+        int inches = input.nextInt();
+
+        
+        int totalInches = feet * 12 + inches;
+
+        
+        double heightInMeters = totalInches * 0.0254;
+        double weightInKg = weight * 0.45359237;
+
+        double bmi = weightInKg / (heightInMeters * heightInMeters);
+
+        System.out.println("BMI is " + bmi);
+
+        if (bmi < 18.5)
+            System.out.println("Underweight");
+        else if (bmi < 25)
+            System.out.println("Normal");
+        else if (bmi < 30)
+            System.out.println("Overweight");
+        else
+            System.out.println("Obese");
+
+        input.close();
+    }
+}
+
+package Chapter3Exercise;
+
+import java.util.Scanner;
+
+public class Cha3Ex3_7 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        
+        System.out.print("Enter an amount in cents (e.g., 1156 for $11.56): ");
+        int amount = input.nextInt();
+
+       
+        int dollars = amount / 100;
+        amount %= 100;
+
+        int quarters = amount / 25;
+        amount %= 25;
+
+        int dimes = amount / 10;
+        amount %= 10;
+
+        int nickels = amount / 5;
+        int pennies = amount % 5;
+
+     
+        if (dollars > 0)
+            System.out.println(dollars + " " + (dollars == 1 ? "dollar" : "dollars"));
+        if (quarters > 0)
+            System.out.println(quarters + " " + (quarters == 1 ? "quarter" : "quarters"));
+        if (dimes > 0)
+            System.out.println(dimes + " " + (dimes == 1 ? "dime" : "dimes"));
+        if (nickels > 0)
+            System.out.println(nickels + " " + (nickels == 1 ? "nickel" : "nickels"));
+        if (pennies > 0)
+            System.out.println(pennies + " " + (pennies == 1 ? "penny" : "pennies"));
+
+        input.close();
+    }
+}
+
+package Chapter3Exercise;
+
+import java.util.Scanner;
+
+public class Cha3Ex3_8 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+      
+        System.out.print("Enter three integers: ");
+        int a = input.nextInt();
+        int b = input.nextInt();
+        int c = input.nextInt();
+
+     
+        int temp;
+        if (a > b) {
+            temp = a; a = b; b = temp;
+        }
+        if (a > c) {
+            temp = a; a = c; c = temp;
+        }
+        if (b > c) {
+            temp = b; b = c; c = temp;
+        }
+
+        System.out.println("Sorted order: " + a + " " + b + " " + c);
+
+        input.close();
+    }
+}
+
+package Chapter3Exercise;
+
+
+        import java.util.Scanner;
+
+public class Cha3Ex3_9 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // Input: first 9 digits as integer
+        System.out.print("Enter the first 9 digits of an ISBN as integer: ");
+        String isbn = input.next();
+
+        // Pad with leading zeros if needed
+        while (isbn.length() < 9) {
+            isbn = "0" + isbn;
+        }
+
+        // Calculate checksum
+        int sum = 0;
+        for (int i = 0; i < 9; i++) {
+            int digit = isbn.charAt(i) - '0';
+            sum += digit * (i + 1);
+        }
+
+        int checksum = sum % 11;
+
+        // Final digit: use 'X' if checksum is 10
+        String lastDigit = (checksum == 10) ? "X" : String.valueOf(checksum);
+
+        // Display full ISBN-10
+        System.out.println("The ISBN-10 number is " + isbn + lastDigit);
+
+        input.close();
+    }
+}
+
+package Chapter3Exercise;
+
+import java.util.Scanner;
+
+public class Cha3Ex3_10 {
+    public static void main(String[] args) {
+       
+        int number1 = (int)(Math.random() * 100);
+        int number2 = (int)(Math.random() * 100);
+
+        Scanner input = new Scanner(System.in);
+        System.out.print("What is " + number1 + " + " + number2 + "? ");
+        int answer = input.nextInt();
+
+        
+        if (answer == number1 + number2) {
+            System.out.println("Correct!");
+        } else {
+            System.out.println("Incorrect. The correct answer is " + (number1 + number2));
+        }
+
+        input.close();
+    }
+}
+
+package Chapter3Exercise;
+
+
+import java.util.Scanner;
+
+public class Cha3Ex3_12 {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        
+        System.out.print("Enter a three-digit integer: ");
+        int number = input.nextInt();
+
+      
+        number = Math.abs(number);
+
+        int firstDigit = number / 100;
+        int lastDigit = number % 10;
+
+     
+        if (firstDigit == lastDigit) {
+            System.out.println(number + " is a palindrome");
+        } else {
+            System.out.println(number + " is not a palindrome");
+        }
+
+        input.close();
+    }
+}
+
+
+
+
+
